@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="end" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align:center;">
+    <h1>Cellphone Application Report</h1>
+    <div style="margin-top:12px;width:100%;">
+        <table>
+            <tr>
+                <th>Report Run Date</th>
+                <th>Number of Phones</th>
+                <th>Total Minutes</th>
+                <th>Total Data</th>
+                <th>Average Minutes</th>
+                <th>Average Data</th>
+            </tr>
+            <tr>
+                <td th:text="${runDate}" />
+                <td th:text="${phoneCount}" />
+                <td th:text="${totalMinutes}" />
+                <td th:text="${totalData}" />
+                <td th:text="${averageMinutes}" />
+                <td th:text="${averageData}" />
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

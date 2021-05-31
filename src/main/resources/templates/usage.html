@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="end" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align:center;">
+    <h1>Cellphone Application Assignment</h1>
+    <div style="margin-top:12px;width:100%;">
+        <form method="POST" action="/cell-phone/upload-usage" enctype="multipart/form-data">
+            Please upload a csv file containing the cellphone usage data. <br/>
+            <br/>
+            <input type="file" name="file" />
+            <br/>
+            <br/>
+            <input type="submit" value="Upload" />
+        </form>
+    </div>
+</div>
+</body>
+</html>
