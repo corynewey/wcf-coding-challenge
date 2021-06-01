@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.time.LocalDate;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Controller
@@ -66,15 +64,18 @@ public class HomePageController {
     }
 
     @PostMapping(value = "/cell-phone/upload-usage")
-    public String uploadUsage(@RequestParam("file") MultipartFile file, Model model) {
+    public String uploadUsage(@RequestParam("file") MultipartFile file, Model model) throws IOException {
         if (file.isEmpty()) {
             model.addAttribute("message", "Please select a CSV file to upload.");
             model.addAttribute("status", false);
             return "usage";
         }
 
+        // Fix the typo in the header. The header name is: emplyeeId but should be: employeeId
+        String csvString = new String(file.getBytes(), StandardCharsets.UTF_8);
+        csvString = csvString.replace("emplyeeId", "employeeId");
         // parse CSV file to create a list of `CellphoneUsage` objects
-        try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+        try (Reader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(csvString.getBytes(StandardCharsets.UTF_8))))) {
             // create csv bean reader
             CsvToBean<CellphoneUsage> csvToBean = new CsvToBeanBuilder(reader)
                     .withType(CellphoneUsage.class)
@@ -83,14 +84,12 @@ public class HomePageController {
 
             // convert `CsvToBean` object to list of EmployeeCellphone objects
             List<CellphoneUsage> usages = csvToBean.parse();
-            int count = 0;
             for (CellphoneUsage usage : usages) {
                 CellphoneUsageEntity usageEntity = new CellphoneUsageEntity(usage.getEmployeeId(),
                                                                            usage.getDate(),
                                                                            usage.getTotalMinutes(),
                                                                            usage.getTotalData());
                 employeeCellphoneService.createCellphoneUsageEntry(usageEntity);
-                System.out.println("Handled record: " + (++count));
             }
             // Generate the report.
             employeeCellphoneService.generateUsageReport(model);

@@ -11,13 +11,13 @@ public class CellphoneEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column(name = "employeeId")
+    @Column(name = "EMPLOYEEID")
     private Long employeeId;
-    @Column(name = "employeeName")
+    @Column(name = "EMPLOYEENAME")
     private String employeeName;
-    @Column(name = "purchaseDate")
+    @Column(name = "PURCHASEDATE")
     private LocalDate purchaseDate;
-    @Column(name = "model")
+    @Column(name = "MODEL")
     private String model;
 
     public CellphoneEntity() {

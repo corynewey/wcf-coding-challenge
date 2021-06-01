@@ -10,13 +10,13 @@ public class CellphoneUsageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @Column(name = "employeeId")
+    @Column(name = "EMPLOYEEID")
     private Long employeeId;
-    @Column(name = "date")
-    private LocalDate date;
-    @Column(name = "totalMinutes")
+    @Column(name = "USAGEDATE")
+    private LocalDate usageDate;
+    @Column(name = "TOTALMINUTES")
     private Integer totalMinutes;
-    @Column(name = "totalData")
+    @Column(name = "TOTALDATA")
     private Double totalData;
 
     public CellphoneUsageEntity() {
@@ -26,7 +26,7 @@ public class CellphoneUsageEntity {
         this.employeeId = employeeId;
         // parse the purchase date
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
-        this.date = LocalDate.parse(date, formatter);
+        this.usageDate = LocalDate.parse(date, formatter);
         this.totalMinutes = totalMinutes;
         this.totalData = totalData;
     }
@@ -47,12 +47,12 @@ public class CellphoneUsageEntity {
         this.employeeId = employeeId;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getUsageDate() {
+        return usageDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setUsageDate(LocalDate date) {
+        this.usageDate = date;
     }
 
     public Integer getTotalMinutes() {
