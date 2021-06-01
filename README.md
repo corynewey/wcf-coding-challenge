@@ -1,4 +1,4 @@
-#wcf-coding-challenge
+# wcf-coding-challenge
 
 To complete this challenge, I have chosen to implement a very simple set of web pages that make up a flow-control
 wizard. I am using Spring MVC with Thymeleaf as the templating engine.
@@ -20,7 +20,7 @@ The final screen will be the generated report that contains a header with genera
 each employee that details that employee's cellphone usage.
 
 
-#Notes
+# Notes
 * I noticed a typo in the cellphone usage data file header (emplyeeId instead of employeeId). My code is fixing the header
 before parsing the csv data.
 * The instructions say that the report page should contain usage data in a separate "column for each month." However,
@@ -40,7 +40,7 @@ an H2 database, as stated above. However, after I analyzed the data a bit more, 
 lines, but rather multiple usage reporting records for certain dates. The choice to store the data in a database was still
 helpful in handling this case.
   
-#Testing
+# Testing
 I have created only one small test. The test assures that the total/average cellphone usage calculations are correct.
 In the real world, I would've of course added a number of other tests: per-user calculations tests, tests of error states, 
 and others.
