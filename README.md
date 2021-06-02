@@ -39,6 +39,8 @@ single date, so it is not a perfect data in a perfect world" (sic). That is why 
 an H2 database, as stated above. However, after I analyzed the data a bit more, I realized that there weren't any duplicate 
 lines, but rather multiple usage reporting records for certain dates. The choice to store the data in a database was still
 helpful in handling this case.
+* The instructions say that the report must be printable on the local printer. To achieve that requirement, I added a
+"Print Report" button that will print the report.
   
 # Testing
 I have created only one small test. The test assures that the total/average cellphone usage calculations are correct.
